@@ -18,14 +18,15 @@ struct TabBarButton: View {
 
     var body: some View {
         Button {
+            print("Tap: \(tabType)")
             selectedTab = tabType
         } label: {
             VStack(alignment: .center, spacing: 4) {
                 Image(systemName: iconName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: isMainButton ? 64 : 24,
-                           height: isMainButton ? 64 : 24)
+                    .frame(width: isMainButton ? 64 : 32,
+                           height: isMainButton ? 64 : 32)
 
                 Text(title)
             }
@@ -39,12 +40,10 @@ struct TabBarButton: View {
 
 #Preview {
     TabBarButton(title: "Test",
-                 iconName: "plus.circle.fill",
+                 iconName: "person.2",
                  isMainButton: false,
                  tabType: .chats,
                  selectedTab: .constant(.chats)
-//                 ,
-//                 isActive: .constant(false)
     )
 }
 

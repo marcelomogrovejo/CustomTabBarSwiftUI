@@ -6,7 +6,7 @@
 //
 
 enum TabsType: Int {
-    case main
     case chats
     case contacts
+    case new
 }

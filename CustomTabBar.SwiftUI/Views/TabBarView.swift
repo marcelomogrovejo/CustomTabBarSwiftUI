@@ -12,6 +12,16 @@ struct TabBarView: View {
     @Binding var selectedTab: TabsType
 
     var body: some View {
+        
+        switch selectedTab {
+        case .chats:
+            Text("selectedTab: \(selectedTab)")
+        case .contacts:
+            Text("selectedTab: \(selectedTab)")
+        case .new:
+            Text("selectedTab: \(selectedTab)")
+        }
+
         VStack {
             HStack {
                 Rectangle()
@@ -38,20 +48,36 @@ struct TabBarView: View {
 
                 Spacer()
 
-                // TODO: it should be a button, not a tab, cause it opens a new full screen controller, and the other ones just open view controllers above the tab bar.
-                TabBarButton(title: "New",
-                             iconName: "plus.circle.fill",
-                             isMainButton: true,
-                             tabType: .main,
-                             selectedTab: $selectedTab,
-                             isActive: false
-                )
+                // TODO: it should act as a button, not a tab button, cause it opens a new full screen controller over whatever screen the user is standing.
+//                TabBarButton(title: "New",
+//                             iconName: "plus.circle.fill",
+//                             isMainButton: true,
+//                             tabType: .new,
+//                             selectedTab: $selectedTab,
+//                             isActive: selectedTab == .chats
+//                )
 //                .background(Color.yellow)
+                
+                Button {
+                    selectedTab = .new
+                } label: {
+                    VStack(alignment: .center, spacing: 4) {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 64, height: 64)
+
+                        Text("New")
+                    }
+                    .padding(20)
+//                    .background(Color.brown)
+                }
+                .tint(.pink)
                 
                 Spacer()
                 
                 TabBarButton(title: "Contacts",
-                             iconName: "person",
+                             iconName: "person.2",
                              tabType: .contacts,
                              selectedTab: $selectedTab,
                              isActive: selectedTab == .contacts
@@ -62,7 +88,6 @@ struct TabBarView: View {
                    maxHeight: 80,
                    alignment: .bottom)
             .padding(.horizontal, 20)
-            
         }
     }
 }
