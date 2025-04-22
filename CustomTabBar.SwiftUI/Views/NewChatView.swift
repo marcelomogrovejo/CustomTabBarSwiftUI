@@ -19,7 +19,9 @@ struct NewChatView: View {
                 Spacer()
 
                 Button("Dismiss") {
-                    dismiss()
+                    withAnimation {
+                        dismiss()
+                    }
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.pink)

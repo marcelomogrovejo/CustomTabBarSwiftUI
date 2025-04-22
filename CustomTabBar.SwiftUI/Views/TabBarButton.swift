@@ -18,7 +18,6 @@ struct TabBarButton: View {
 
     var body: some View {
         Button {
-            print("Tap: \(tabType)")
             selectedTab = tabType
         } label: {
             VStack(alignment: .center, spacing: 4) {

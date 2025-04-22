@@ -15,40 +15,27 @@ struct ContentView: View {
     var body: some View {
         VStack {
             switch selectedTab {
-//            case .new:
-//                Text("Main")
-//                Spacer()
-//                    .fullScreenCover(isPresented: $isPresented) {
-//                        NewChatView()
-//                    }
-//            case .chats:
-//                ChatsView()
+            case .chats:
+                ChatsView()
             case .contacts:
                 ContactsView()
-                    .fullScreenCover(isPresented: $isPresented) {
-                        NewChatView()
-                    }
-            default:
-                ChatsView()
-                    .fullScreenCover(isPresented: $isPresented) {
-                        NewChatView()
-                    }
+            }
+
+            if isPresented {
+                withAnimation {
+                    Spacer()
+                        .fullScreenCover(isPresented: $isPresented) {
+                            NewChatView()
+                                .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                        }
+                }
             }
 
             Spacer()
 
-            Text("selected: \(selectedTab)")
-
-            TabBarView(selectedTab: $selectedTab)
+            TabBarView(selectedTab: $selectedTab, isMainAction: $isPresented)
         }
         .frame(maxWidth: .infinity)
-//        .background(.yellow)
-        .onChange(of: selectedTab, { oldValue, newValue in
-            print("oldValue: \(oldValue), newValue: \(newValue)")
-            if selectedTab == .new {
-                isPresented = true
-            }
-        })
     }
 }
 
