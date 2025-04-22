@@ -15,29 +15,29 @@ struct ContentView: View {
     var body: some View {
         VStack {
             switch selectedTab {
-            case .main:
-                Text("Main")
-                Spacer()
-                    .fullScreenCover(isPresented: $isPresented) {
-                        NewChatView()
-                    }
             case .chats:
                 ChatsView()
             case .contacts:
                 ContactsView()
             }
 
+            if isPresented {
+                withAnimation {
+                    Spacer()
+                        .fullScreenCover(isPresented: $isPresented) {
+                            NewChatView()
+                                .transition(.asymmetric(insertion: .scale,
+                                                        removal: .opacity))
+                        }
+                }
+            }
+
             Spacer()
 
-            TabBarView(selectedTab: $selectedTab)
+            TabBarView(selectedTab: $selectedTab,
+                       isMainAction: $isPresented)
         }
         .frame(maxWidth: .infinity)
-//        .background(.yellow)
-        .onChange(of: selectedTab, { oldValue, newValue in
-            if selectedTab == .main {
-                isPresented = true
-            }
-        })
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBarView: View {
 
     @Binding var selectedTab: TabsType
+    @Binding var isMainAction: Bool
 
     var body: some View {
         VStack {
@@ -19,7 +20,7 @@ struct TabBarView: View {
                     .foregroundStyle(Color.pink)
 
                 Rectangle()
-                    .frame(width: 60, height: 0)
+                    .frame(width: 40, height: 0)
                     .foregroundStyle(Color.clear)
                 
                 Rectangle()
@@ -38,20 +39,14 @@ struct TabBarView: View {
 
                 Spacer()
 
-                // TODO: it should be a button, not a tab, cause it opens a new full screen controller, and the other ones just open view controllers above the tab bar.
-                TabBarButton(title: "New",
-                             iconName: "plus.circle.fill",
-                             isMainButton: true,
-                             tabType: .main,
-                             selectedTab: $selectedTab,
-                             isActive: false
-                )
-//                .background(Color.yellow)
-                
+                TabMainButton(iconName: "plus.circle.fill",
+                              title: "New",
+                              isTapped: $isMainAction)
+
                 Spacer()
-                
+
                 TabBarButton(title: "Contacts",
-                             iconName: "person",
+                             iconName: "person.2",
                              tabType: .contacts,
                              selectedTab: $selectedTab,
                              isActive: selectedTab == .contacts
@@ -59,14 +54,14 @@ struct TabBarView: View {
 //                .background(Color.gray)
             }
             .frame(maxWidth: .infinity,
-                   maxHeight: 80,
+                   maxHeight: 60,
                    alignment: .bottom)
             .padding(.horizontal, 20)
-            
         }
     }
 }
 
 #Preview {
-    TabBarView(selectedTab: .constant(.chats))
+    TabBarView(selectedTab: .constant(.chats),
+               isMainAction: .constant(false))
 }
