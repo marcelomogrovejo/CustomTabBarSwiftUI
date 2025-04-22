@@ -20,7 +20,7 @@ struct TabBarView: View {
                     .foregroundStyle(Color.pink)
 
                 Rectangle()
-                    .frame(width: 60, height: 0)
+                    .frame(width: 40, height: 0)
                     .foregroundStyle(Color.clear)
                 
                 Rectangle()
@@ -42,9 +42,9 @@ struct TabBarView: View {
                 TabMainButton(iconName: "plus.circle.fill",
                               title: "New",
                               isTapped: $isMainAction)
-                
+
                 Spacer()
-                
+
                 TabBarButton(title: "Contacts",
                              iconName: "person.2",
                              tabType: .contacts,
@@ -54,7 +54,7 @@ struct TabBarView: View {
 //                .background(Color.gray)
             }
             .frame(maxWidth: .infinity,
-                   maxHeight: 80,
+                   maxHeight: 60,
                    alignment: .bottom)
             .padding(.horizontal, 20)
         }

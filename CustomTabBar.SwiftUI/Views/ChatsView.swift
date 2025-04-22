@@ -18,3 +18,6 @@ struct ChatsView: View {
     }
 }
 
+#Preview {
+    ChatsView()
+}

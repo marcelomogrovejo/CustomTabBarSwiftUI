@@ -21,12 +21,12 @@ struct TabBarButton: View {
         } label: {
             VStack(alignment: .center, spacing: 4) {
                 Image(systemName: iconName)
-                    .resizable()
                     .scaledToFit()
                     .frame(width: 25,
                            height: 25)
 
                 Text(title)
+                    .font(.TabBar.regular)
             }
             .padding(20)
 //            .background(Color.brown)

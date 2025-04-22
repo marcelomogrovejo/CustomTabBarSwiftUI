@@ -12,24 +12,19 @@ struct NewChatView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("New Chat")
-
-                Spacer()
-
-                Button("Dismiss") {
-                    withAnimation {
-                        dismiss()
+        NavigationStack {
+            Text("Form here")
+                .navigationTitle("New Chat")
+                .toolbar {
+                    ToolbarItemGroup(placement: .primaryAction) {
+                        Button("Cancel") {
+                            withAnimation {
+                                dismiss()
+                            }
+                        }
+                        .tint(.pink)
                     }
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(.pink)
-                .fontWeight(.semibold)
-                .controlSize(.large)
-
-            }
-            .navigationTitle("New Chat")
         }
     }
 }

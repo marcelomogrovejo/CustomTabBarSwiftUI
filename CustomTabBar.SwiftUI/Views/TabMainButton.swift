@@ -21,9 +21,11 @@ struct TabMainButton: View {
                 Image(systemName: iconName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 64, height: 64)
+                    .frame(width: 40, height: 40)
+                    .offset(y: -10)
 
                 Text(title)
+                    .font(.TabBar.main)
             }
             .padding(20)
 //                    .background(Color.brown)
