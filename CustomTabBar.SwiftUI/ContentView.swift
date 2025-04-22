@@ -26,14 +26,16 @@ struct ContentView: View {
                     Spacer()
                         .fullScreenCover(isPresented: $isPresented) {
                             NewChatView()
-                                .transition(.asymmetric(insertion: .scale, removal: .opacity))
+                                .transition(.asymmetric(insertion: .scale,
+                                                        removal: .opacity))
                         }
                 }
             }
 
             Spacer()
 
-            TabBarView(selectedTab: $selectedTab, isMainAction: $isPresented)
+            TabBarView(selectedTab: $selectedTab,
+                       isMainAction: $isPresented)
         }
         .frame(maxWidth: .infinity)
     }

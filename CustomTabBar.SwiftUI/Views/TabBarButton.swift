@@ -9,9 +9,8 @@ import SwiftUI
 
 struct TabBarButton: View {
 
-    var title = ""
-    var iconName = ""
-    var isMainButton = false
+    var title = "Title"
+    var iconName = "person.3"
     var tabType: TabsType
     @Binding var selectedTab: TabsType
     var isActive: Bool = false
@@ -24,8 +23,8 @@ struct TabBarButton: View {
                 Image(systemName: iconName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: isMainButton ? 64 : 32,
-                           height: isMainButton ? 64 : 32)
+                    .frame(width: 25,
+                           height: 25)
 
                 Text(title)
             }
@@ -33,14 +32,13 @@ struct TabBarButton: View {
 //            .background(Color.brown)
         }
         .frame(width: 100)
-        .tint((isMainButton || isActive) ? .pink : .gray)
+        .tint(isActive ? .pink : .gray)
     }
 }
 
 #Preview {
     TabBarButton(title: "Test",
                  iconName: "person.2",
-                 isMainButton: false,
                  tabType: .chats,
                  selectedTab: .constant(.chats)
     )
